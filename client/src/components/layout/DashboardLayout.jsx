@@ -69,7 +69,7 @@ function Sidebar({ mobile = false, user, setMobileMenuOpen, setLogoutConfirmOpen
       <nav className="flex-1 px-3 space-y-0.5 overflow-y-auto overscroll-contain" style={{ WebkitOverflowScrolling: 'touch' }}>
         {NAV.filter(item => {
           if (item.adminOnly && user?.role !== 'super_admin') return false;
-          if (user?.role === 'super_admin' && (item.to === '/upload' || item.to === '/my-files')) return false;
+          if (user?.role === 'super_admin' && (item.to === '/upload' || item.to === '/my-files' || item.to === '/study-rooms')) return false;
           return true;
         }).map(({ to, icon: Icon, label }) => (
           <NavLink key={to} to={to}
@@ -404,7 +404,7 @@ export default function DashboardLayout() {
         <div className="flex items-center justify-around px-2 py-2">
           {NAV.filter(item => {
             if (item.adminOnly && user?.role !== 'super_admin') return false;
-            if (user?.role === 'super_admin' && (item.to === '/upload' || item.to === '/my-files')) return false;
+            if (user?.role === 'super_admin' && (item.to === '/upload' || item.to === '/my-files' || item.to === '/study-rooms')) return false;
             return true;
           }).slice(0, 5).map(({ to, icon: Icon, label }) => (
             <NavLink key={to} to={to}
